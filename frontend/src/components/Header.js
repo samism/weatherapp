@@ -31,7 +31,7 @@ const HeaderStyles = styled.header`
   }
 `;
 
-const Header = props => {
+const Header = ({ isAuthenticated }) => {
   return (
     <HeaderStyles>
       <div className="headerTextWrapper">
@@ -41,7 +41,7 @@ const Header = props => {
           <Emoji>️🌦</Emoji>
         </h1>
       </div>
-      <Nav />
+      <Nav isAuthenticated={isAuthenticated} />
     </HeaderStyles>
   );
 };

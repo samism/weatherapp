@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Auth } from '../firebase';
 
-const NavItem = styled(Link)`
+const sharedNavStyle = css`
   display: block;
   padding: 10px 30px;
   transition: all 0.5s ease-in;
@@ -11,11 +12,19 @@ const NavItem = styled(Link)`
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
     font-style: italic;
+    cursor: pointer;
   }
   &:active {
     background-color: rgba(0, 0, 0, 0.8);
     color: #1d1f21;
   }
+`;
+
+const NavItem = styled(Link)`
+  ${sharedNavStyle}
+`;
+const SignOutItem = styled.a`
+  ${sharedNavStyle}
 `;
 
 const NavStyles = styled.nav`
@@ -32,7 +41,11 @@ const NavStyles = styled.nav`
   }
 `;
 
-const Nav = props => {
+const Nav = ({ isAuthenticated }) => {
+  const signOut = () => {
+    return Auth.signOut();
+  };
+
   return (
     <NavStyles>
       <ul>
@@ -42,6 +55,11 @@ const Nav = props => {
         <li>
           <NavItem to="/historical">Historical</NavItem>
         </li>
+        {isAuthenticated && (
+          <li>
+            <SignOutItem onClick={signOut}>Sign Out</SignOutItem>
+          </li>
+        )}
       </ul>
     </NavStyles>
   );
