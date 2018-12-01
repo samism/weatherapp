@@ -38,14 +38,21 @@ const SignInForm = ({ signIn }) => {
           signIn(event);
         }}
       >
-        <input name="email" placeholder="Email" type="text" required/>
-        <input name="password" placeholder="Password" type="password" required/>
+        <input name="email" placeholder="Email" type="text" required />
+        <input
+          name="password"
+          placeholder="Password"
+          type="password"
+          required
+        />
         <button type="submit">Sign In</button>
       </form>
     </FormStyles>
   );
 };
 
-SignInForm.propTypes = {};
+SignInForm.propTypes = {
+  signIn: PropTypes.func.isRequired
+};
 
 export default SignInForm;
