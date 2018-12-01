@@ -27,6 +27,10 @@ const HeaderStyles = styled.header`
       transform: skew(-5deg) rotate(-1deg);
       display: inline-block;
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+
+      @media screen and (max-width: 720px) {
+        font-size: 3vw;
+      }
     }
   }
 `;

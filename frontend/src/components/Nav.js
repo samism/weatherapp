@@ -9,6 +9,7 @@ const sharedNavStyle = css`
   padding: 10px 30px;
   transition: all 0.5s ease-in;
   font-weight: bold;
+  word-wrap: break-word;
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
     font-style: italic;
@@ -18,6 +19,11 @@ const sharedNavStyle = css`
     background-color: rgba(0, 0, 0, 0.8);
     color: #1d1f21;
   }
+
+  @media screen and (max-width: 700px) {
+    padding: 10px 5px;
+    font-size: 20px;
+  }
 `;
 
 const NavItem = styled(Link)`
@@ -25,12 +31,22 @@ const NavItem = styled(Link)`
 `;
 const SignOutItem = styled.a`
   ${sharedNavStyle}
+
+  @media screen and (max-width: 700px) {
+    padding: 10px 5px;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: 15px;
+  }
 `;
 
 const NavStyles = styled.nav`
   ul {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 1.5vw;
     list-style-type: none;
     display: flex;
     li {
