@@ -38,8 +38,8 @@ const SignInForm = ({ signIn }) => {
           signIn(event);
         }}
       >
-        <input name="email" placeholder="Email" type="text" />
-        <input name="password" placeholder="Password" type="password" />
+        <input name="email" placeholder="Email" type="text" required/>
+        <input name="password" placeholder="Password" type="password" required/>
         <button type="submit">Sign In</button>
       </form>
     </FormStyles>
