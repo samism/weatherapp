@@ -1,5 +1,8 @@
 const express = require('express');
 const axios = require('axios');
+
+const WeatherData = require('../models/weatherdata');
+
 const router = express.Router();
 
 /**
@@ -23,14 +26,25 @@ router.get('/weather/:zip', async (req, res, next) => {
   let weatherData = null;
 
   try {
-    weatherData = await axios(url);
+    weatherData = (await axios(url)).data;
   } catch (e) {
     console.log('Call to Open Weather API failed: ', e); //log stack trace internally only
     return res
       .status(500)
       .json({ error: 'Request to Open Weather API failed.' }); //generic error to public
   }
-  return res.status(200).json({ result: weatherData.data });
+
+  const newData = new WeatherData({ data: weatherData });
+  newData.save(err => {
+    if (err) {
+      console.log('Problem saving weather data: ', err);
+      res
+        .status(500)
+        .json({ error: 'Failed to save weather data to database.' });
+    }
+
+    return res.status(200).json({ result: weatherData });
+  });
 });
 
 module.exports = router;
