@@ -7,6 +7,8 @@ import { Auth } from '../firebase';
 const sharedNavStyle = css`
   display: block;
   padding: 10px 30px;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
   font-weight: bold;
   word-wrap: break-word;
@@ -48,6 +50,8 @@ const NavStyles = styled.nav`
     margin: 0;
     font-size: 1.5vw;
     list-style-type: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     li {
       height: 100%;

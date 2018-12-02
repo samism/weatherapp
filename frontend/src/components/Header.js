@@ -10,12 +10,21 @@ const HeaderStyles = styled.header`
   border-top: 5px dashed #c5c8c6;
   background-color: #f4424e;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 
   .headerTextWrapper {
     padding: 10px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     h1 {
       font-size: 3rem;
@@ -24,6 +33,8 @@ const HeaderStyles = styled.header`
       padding: 10px 15px;
       margin: 10px 0 10px 0;
       background-color: rgba(197, 200, 198, 0.8);
+      -webkit-transform: skew(-5deg) rotate(-1deg);
+      -ms-transform: skew(-5deg) rotate(-1deg);
       transform: skew(-5deg) rotate(-1deg);
       display: inline-block;
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);

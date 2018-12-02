@@ -6,7 +6,12 @@ const FormStyles = styled.main`
   form {
     width: 50%;
     margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     input {
       font-size: 2rem;

@@ -8,18 +8,32 @@ import WeatherData from '../components/WeatherData';
 import GoogleMap from '../components/GoogleMap';
 
 const WeatherPageStyle = styled.main`
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
 
   .visuals {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     margin: 0 0 2rem 0;
 
     @media screen and (max-width: 1000px) {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
       flex-direction: row;
+      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
     }
   }

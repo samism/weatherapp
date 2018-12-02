@@ -4,8 +4,15 @@ import styled from 'styled-components';
 
 const FormStyles = styled.main`
   form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     input {
       width: 20vw;
@@ -29,7 +36,7 @@ const FormStyles = styled.main`
   }
 `;
 
-const WeatherDataForm = ({findWeatherForZip}) => {
+const WeatherDataForm = ({ findWeatherForZip }) => {
   return (
     <FormStyles>
       <form
