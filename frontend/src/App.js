@@ -68,8 +68,6 @@ class App extends Component {
   };
 
   render() {
-    // if (this.state.user === undefined) return <h2>Loading...</h2>;
-
     return (
       <React.Fragment>
         <GlobalStyle />
