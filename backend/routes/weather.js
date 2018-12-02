@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 
 const WeatherData = require('../models/weatherdata');
+const Email = require('../models/email');
 
 const router = express.Router();
 
@@ -78,6 +79,33 @@ router.get('/weather/:zip', async (req, res, next) => {
     }
 
     return res.status(200).json({ result: weatherData });
+  });
+});
+
+/**
+ *  Route of the format /weather/mailinglist
+ *
+ *  Takes a valid email and saves it to the emails collection.
+ *
+ */
+router.post('/weather/mailinglist', async (req, res, next) => {
+  const { email } = req.body;
+
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  //only accepts valid email
+  if (!emailRegex.test(String(email).toLowerCase())) {
+    return res.status(400).json({ error: 'Invalid Email' });
+  }
+
+  const newData = new Email({ email: email });
+  newData.save(err => {
+    if (err) {
+      console.log('Problem saving email: ', err);
+      res.status(500).json({ error: 'Failed to save email to database.' });
+    }
+
+    return res.status(200).json({ result: 'Successfully saved email' });
   });
 });
 
