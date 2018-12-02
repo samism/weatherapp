@@ -7,7 +7,9 @@ import { Auth } from './firebase';
 import Weather from './pages/weather';
 import Graph from './pages/historical';
 import SignIn from './pages/auth';
+
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -101,6 +103,7 @@ class App extends Component {
             />
           </Switch>
         </PageStyle>
+        <Footer />
       </React.Fragment>
     );
   }
