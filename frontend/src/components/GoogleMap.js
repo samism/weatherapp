@@ -29,6 +29,8 @@ const GoogleMap = ({ center }) => {
   );
 };
 
-GoogleMap.propTypes = {};
+GoogleMap.propTypes = {
+  center: PropTypes.object
+};
 
 export default GoogleMap;

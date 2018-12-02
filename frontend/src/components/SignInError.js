@@ -18,6 +18,8 @@ const SignInError = ({ error }) =>
     </SignInErrorStyle>
   ) : null;
 
-SignInError.propTypes = {};
+SignInError.propTypes = {
+  error: PropTypes.object
+};
 
 export default SignInError;
