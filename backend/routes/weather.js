@@ -40,7 +40,7 @@ router.get('/weather/history', async (req, res, next) => {
 });
 
 /**
- *  Route of the format /weater/zip/{60076}
+ *  Route of the format /weather/zip/{60076}
  *
  *  Takes a valid zip code and returns all of the Open Weather Map API data for the last 10 minutes.
  *
