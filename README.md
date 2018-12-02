@@ -10,6 +10,8 @@
 
 ### Todo: Implement some unit tests, containerize into two services, implement a registration component, server-side rendering, etc.
 
+### Check it out live [here](https://weather-app-q8x1kykro.now.sh/).
+
 ### Images
 
 ![Login Page](https://i.imgur.com/Q9fdEYn.png)
