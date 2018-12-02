@@ -85,6 +85,8 @@ const Nav = ({ isAuthenticated }) => {
   );
 };
 
-Nav.propTypes = {};
+Nav.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
 
 export default Nav;

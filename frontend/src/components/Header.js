@@ -61,6 +61,8 @@ const Header = ({ isAuthenticated }) => {
   );
 };
 
-Header.propTypes = {};
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool
+};
 
 export default Header;
