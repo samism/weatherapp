@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Redirect } from 'react-router';
 
@@ -43,7 +42,5 @@ class SignIn extends Component {
     );
   }
 }
-
-SignIn.propTypes = {};
 
 export default SignIn;
