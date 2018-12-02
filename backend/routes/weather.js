@@ -5,6 +5,40 @@ const WeatherData = require('../models/weatherdata');
 
 const router = express.Router();
 
+const round = num => Math.round(num * 100) / 100;
+
+/**
+ *  Route of the format /weather/history
+ *
+ *  Returns all of the Open Weather Map API data for the last 6 lookups.
+ *
+ */
+router.get('/weather/history', async (req, res, next) => {
+  try {
+    const weatherData = await WeatherData.find({})
+      .sort('-updatedAt')
+      .limit(6);
+    if (weatherData) {
+      //format nicely to immediately work & feed into the chart component
+      const nicelyFormattedData = weatherData.map(entry => {
+        const { temp } = entry.data.main;
+        return {
+          city: entry.data.name,
+          kelvin: temp,
+          celcius: round(temp - 273.15),
+          fahrenheight: round(temp * 1.8 - 459.67)
+        };
+      });
+      return res.status(200).json({ nicelyFormattedData });
+    }
+  } catch (e) {
+    console.log('Could not retrieve saved weather data from Mongo: ', e);
+    return res
+      .status(500)
+      .json({ error: 'Failed to retrieve last 6 historical entries.' });
+  }
+});
+
 /**
  *  Route of the format /weater/zip/{60076}
  *
