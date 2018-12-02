@@ -59,7 +59,7 @@ class Footer extends Component {
 
     const { email } = event.target;
 
-    const url = `http://localhost:3001/api/weather/mailinglist`;
+    const url = `https://backend-cernaikexq.now.sh/api/weather/mailinglist`;
     let data = null;
     try {
       data = (await axios.post(url, { email: email.value })).data;

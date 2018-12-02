@@ -49,7 +49,7 @@ class Weather extends Component {
     event.preventDefault();
 
     const { zip } = event.target;
-    const url = `/api/weather/${zip.value}`;
+    const url = `https://backend-cernaikexq.now.sh/api/weather/${zip.value}`;
 
     let weatherData = null;
 

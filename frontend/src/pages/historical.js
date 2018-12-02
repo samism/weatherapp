@@ -16,7 +16,7 @@ class Graph extends Component {
   }
 
   fetchData = async () => {
-    const url = `/api/weather/history`;
+    const url = `https://backend-cernaikexq.now.sh/api/weather/history`;
     let data = null;
     try {
       data = (await axios(url)).data.nicelyFormattedData;
