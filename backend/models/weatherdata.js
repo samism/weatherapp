@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WeatherDataSchema = new Schema({
@@ -9,4 +9,8 @@ const WeatherDataSchema = new Schema({
   data: { type: Object, required: true }
 });
 
-export default mongoose.model('WeatherData', WeatherDataSchema, 'weatherdata');
+module.exports = mongoose.model(
+  'WeatherData',
+  WeatherDataSchema,
+  'weatherdata'
+);
