@@ -25,9 +25,10 @@ router.get('/weather/:zip', async (req, res, next) => {
   try {
     weatherData = await axios(url);
   } catch (e) {
+    console.log('Call to Open Weather API failed: ', e); //log stack trace internally only
     return res
       .status(500)
-      .json({ error: 'Request to Open Weather API failed.' });
+      .json({ error: 'Request to Open Weather API failed.' }); //generic error to public
   }
   return res.status(200).json({ result: weatherData.data });
 });
