@@ -10,6 +10,8 @@ const FooterStyles = styled.footer`
   border-bottom: 5px dashed #c5c8c6;
   background-color: #f4424e;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 
   form {
@@ -23,6 +25,8 @@ const FooterStyles = styled.footer`
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
 
     input {
