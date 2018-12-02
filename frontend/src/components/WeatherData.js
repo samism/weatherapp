@@ -12,12 +12,33 @@ const WeatherDataStyle = styled.aside`
   padding: 20px;
   min-height: 100%;
 
+  h1 {
+    font-size: 5rem;
+  }
+
+  .heading {
+    text-decoration: underline;
+  }
+
+  .temp {
+    margin: 0;
+    text-align: right;
+  }
+
+  .cityName {
+    color: #f4424e;
+  }
+
   @media screen and (max-width: 1000px) {
     margin: 20px 0 0 0;
   }
 `;
 
+const round = num => Math.round(num * 100) / 100;
+
 const WeatherData = ({ data, error }) => {
+  const { temp } = (data && data.main) || { temp: 0 };
+
   let content = null;
 
   if (error || !data) {
@@ -25,9 +46,35 @@ const WeatherData = ({ data, error }) => {
   }
 
   if (data) {
-    content = <div>{data.main.temp} kelvin</div>;
+    content = (
+      <div>
+        <h1 className="temp">{round(temp)} &#x000B0;Kelvin</h1>
+        <h1 className="temp">{round(temp - 273.15)} &#x000B0;Celsius</h1>
+        <h1 className="temp">
+          {round(temp * 1.8 - 459.67)} &#x000B0;Fahrenheight
+        </h1>
+      </div>
+    );
   }
-  return <WeatherDataStyle>{content}</WeatherDataStyle>;
+  return (
+    <WeatherDataStyle>
+      <h1 className="heading">
+        Weather Data
+        {data && ': '}
+        <span className="cityName">{data && `${data.name}`}</span>
+        {data &&
+          data.weather.map(icon => (
+            <span className="cityName">
+              <img
+                src={`http://openweathermap.org/img/w/${icon.icon}.png`}
+                alt={icon.icon}
+              />
+            </span>
+          ))}
+      </h1>
+      {content}
+    </WeatherDataStyle>
+  );
 };
 
 WeatherData.propTypes = {
